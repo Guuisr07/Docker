@@ -1,0 +1,14 @@
+# O docker-compose serve com um orquestrador de container, trabalhando com a configuracao inteira do container
+# neste caso usaremos o docker-compose para refletir uma pasta do projeto para dentro do container 
+# sendo assim sempre que essa pasta receber alguma alteracao, sera alterado dentro do container tambem 
+version: "3"
+
+services: 
+  app: 
+    build: .
+    command: npm start
+    ports: 
+      - "3000:3000"
+    # Para mostrar em qual pasta sera refletido as operacoes
+    volumes:
+      - .:/usr/src/app
